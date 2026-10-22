@@ -1,0 +1,4 @@
+{
+  "desc": "燕云十六声 · 时装图鉴小程序 sitemap",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

@@ -1,0 +1,14 @@
+packages:
+  - admin
+  - miniapp
+
+allowBuilds:
+  core-js: set this to true or false
+  core-js-pure: set this to true or false
+  esbuild: set this to true or false
+  vue-demi: set this to true or false
+
+# pnpm 10+ 默认阻止依赖的构建脚本；esbuild 需要落地平台二进制，vue-demi 需要按 vue 版本切换转发文件。
+onlyBuiltDependencies:
+  - esbuild
+  - vue-demi

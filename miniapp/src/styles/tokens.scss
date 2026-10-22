@@ -1,0 +1,215 @@
+/* 由 scripts/gen-tokens.mjs 从 design/tokens.json 生成 —— 请勿手动修改 */
+/* target: miniapp SCSS variables | generated: 2026-10-22T01:53:37.563Z */
+
+$ink-50: #EDE8E3;
+$ink-100: #D9D0C6;
+$ink-200: #B7ADA4;
+$ink-300: #918780;
+$ink-400: #6E645B;
+$ink-500: #514840;
+$ink-600: #3A332D;
+$ink-700: #2A2521;
+$ink-800: #1B1815;
+$ink-900: #100E0C;
+$paper-50: #FDFBF7;
+$paper-100: #F7F2E9;
+$paper-200: #EFE7D9;
+$paper-300: #E3D8C6;
+$paper-400: #D2C3AC;
+$cinnabar-100: #F7E5E2;
+$cinnabar-300: #D96B62;
+$cinnabar-400: #C0443C;
+$cinnabar-500: #A6322A;
+$cinnabar-600: #8A2A21;
+$gold-100: #F6EEDF;
+$gold-300: #E0C99A;
+$gold-400: #C9A063;
+$gold-500: #B08A45;
+$gold-600: #8A6A32;
+$jade-100: #E4EDEA;
+$jade-400: #86A79E;
+$jade-500: #5F837A;
+$jade-600: #47655C;
+$indigo-100: #E3E8EE;
+$indigo-400: #55697D;
+$indigo-500: #38485A;
+$indigo-600: #2B3947;
+$ochre-100: #F2E3D6;
+$ochre-400: #B88154;
+$ochre-500: #9A6238;
+$ochre-600: #7A4A2E;
+$purple-100: #EFE3EA;
+$purple-400: #8C5C74;
+$purple-500: #6B4159;
+$purple-600: #4E2F44;
+$bamboo-100: #E5EDE3;
+$bamboo-400: #7B9878;
+$bamboo-500: #56755A;
+$bamboo-600: #3F5A45;
+$moon-100: #F0F3F4;
+$moon-400: #BCC6CC;
+$moon-500: #9AA6AF;
+$moon-600: #7E8A94;
+
+$bg: #F7F2E9;
+$bg-subtle: #FDFBF7;
+$surface: #FFFDF9;
+$surface-raised: #FFFFFF;
+$surface-inverse: #1B1815;
+$text-primary: #1B1815;
+$text-secondary: #514840;
+$text-tertiary: #6E645B;
+$text-placeholder: #918780;
+$text-inverse: #F7F2E9;
+$border: rgba(27,24,21,0.10);
+$border-strong: rgba(27,24,21,0.18);
+$divider: rgba(27,24,21,0.07);
+$accent: #A6322A;
+$accent-hover: #8A2A21;
+$accent-soft: #F7E5E2;
+$gold: #B08A45;
+$gold-soft: #F6EEDF;
+$success: #47655C;
+$warning: #9A6238;
+$danger: #A6322A;
+$info: #38485A;
+
+$rarity-common: #7E8A94;
+$rarity-common-bg: #F0F3F4;
+$rarity-common-border: #D6DDE1;
+$rarity-fine: #47655C;
+$rarity-fine-bg: #E4EDEA;
+$rarity-fine-border: #BFD3CD;
+$rarity-rare: #38485A;
+$rarity-rare-bg: #E3E8EE;
+$rarity-rare-border: #C2CCD8;
+$rarity-epic: #8A6A32;
+$rarity-epic-bg: #F6EEDF;
+$rarity-epic-border: #E4D2AC;
+$rarity-legend: #A6322A;
+$rarity-legend-bg: #F7E5E2;
+$rarity-legend-border: #EBC3BF;
+
+// 间距 / 圆角 / 字号在 750 设计稿下按 2 倍换算为 rpx
+
+$space-0: 0rpx;
+$space-1: 8rpx;
+$space-2: 16rpx;
+$space-3: 24rpx;
+$space-4: 32rpx;
+$space-5: 40rpx;
+$space-6: 48rpx;
+$space-8: 64rpx;
+$space-10: 80rpx;
+$space-14: 112rpx;
+$space-18: 144rpx;
+
+$radius-xs: 4rpx;
+$radius-sm: 8rpx;
+$radius-md: 16rpx;
+$radius-lg: 24rpx;
+$radius-xl: 32rpx;
+$radius-2xl: 48rpx;
+$radius-pill: 1998rpx;
+
+$text-xs: 24rpx;
+$text-sm: 26rpx;
+$text-base: 28rpx;
+$text-md: 32rpx;
+$text-lg: 36rpx;
+$text-xl: 40rpx;
+$text-2xl: 48rpx;
+$text-3xl: 60rpx;
+$text-4xl: 76rpx;
+
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+
+$leading-tight: 1.2;
+$leading-snug: 1.35;
+$leading-normal: 1.55;
+$leading-relaxed: 1.75;
+
+$tracking-tighter: -0.01em;
+$tracking-normal: 0;
+$tracking-wide: 0.04em;
+$tracking-wider: 0.12em;
+$tracking-widest: 0.24em;
+
+$motion-fast: 140ms;
+$motion-base: 220ms;
+$motion-slow: 380ms;
+$motion-slower: 640ms;
+$motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+$motion-easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
+$motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+$shadow-xs: 0 2rpx 4rpx rgba(27,24,21,0.05);
+$shadow-sm: 0 4rpx 16rpx -4rpx rgba(27,24,21,0.08);
+$shadow-md: 0 12rpx 40rpx -16rpx rgba(27,24,21,0.16);
+$shadow-lg: 0 32rpx 88rpx -32rpx rgba(27,24,21,0.22);
+$shadow-ink: 0 48rpx 120rpx -48rpx rgba(16,14,12,0.45);
+
+// 字体族：小程序不支持外部字体，使用系统衬线族保证古风观感
+
+$font-display: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif SC", "SimSun", serif;
+$font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+$font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+
+// 数值别名（rpx 直呼，供页面便捷使用）
+
+$text-18: 18rpx;
+$text-20: 20rpx;
+$text-22: 22rpx;
+$text-24: 24rpx;
+$text-26: 26rpx;
+$text-28: 28rpx;
+$text-30: 30rpx;
+$text-32: 32rpx;
+$text-34: 34rpx;
+$text-36: 36rpx;
+$text-38: 38rpx;
+$text-40: 40rpx;
+$text-42: 42rpx;
+$text-44: 44rpx;
+$text-46: 46rpx;
+$text-48: 48rpx;
+$text-50: 50rpx;
+$text-52: 52rpx;
+$text-54: 54rpx;
+$text-56: 56rpx;
+$text-58: 58rpx;
+$text-60: 60rpx;
+$text-62: 62rpx;
+$text-64: 64rpx;
+$text-66: 66rpx;
+$text-68: 68rpx;
+$text-70: 70rpx;
+$text-72: 72rpx;
+$text-74: 74rpx;
+$text-76: 76rpx;
+
+$space-4: 4rpx;
+$space-8: 8rpx;
+$space-12: 12rpx;
+$space-16: 16rpx;
+$space-20: 20rpx;
+$space-24: 24rpx;
+$space-28: 28rpx;
+$space-32: 32rpx;
+$space-40: 40rpx;
+$space-48: 48rpx;
+$space-56: 56rpx;
+$space-64: 64rpx;
+$space-72: 72rpx;
+$space-96: 96rpx;
+
+$radius-4: 8rpx;
+$radius-6: 12rpx;
+$radius-8: 16rpx;
+$radius-10: 20rpx;
+$radius-12: 24rpx;
+$radius-16: 32rpx;
+$radius-999: 999rpx;

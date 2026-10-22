@@ -22,3 +22,34 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# 依赖
+node_modules/
+.pnpm-store/
+
+# 构建产物
+dist/
+unpackage/
+backend/target/
+backend/**/target/
+.vite/
+*.tsbuildinfo
+
+# 运行时上传（保留素材，忽略用户上传）
+backend/upload/images/uploads/
+
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+
+# 日志与环境
+*.log
+.env
+.env.local
+
+# 历史遗留（早期 Node mock 方案，已废弃）
+server/data/db.json
+server/public/images/uploads/

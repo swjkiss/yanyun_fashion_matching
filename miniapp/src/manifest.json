@@ -1,0 +1,44 @@
+{
+  "name": "燕云十六声·时装图鉴",
+  "appid": "",
+  "description": "燕云十六声古风时装图鉴与搭配社区",
+  "versionName": "1.0.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true,
+    "nvueStyleCompiler": "uni-app",
+    "compilerVersion": 3
+  },
+  "quickapp": {},
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false,
+      "es6": true,
+      "minified": true,
+      "postcss": true
+    },
+    "usingComponents": true,
+    "darkmode": false,
+    "lazyCodeLoading": "requiredComponents"
+  },
+  "h5": {
+    "title": "燕云十六声 · 时装图鉴",
+    "router": {
+      "mode": "hash",
+      "base": "./"
+    },
+    "devServer": {
+      "port": 5175,
+      "host": "127.0.0.1",
+      "https": false
+    },
+    "optimization": {
+      "treeShaking": {
+        "enable": true
+      }
+    }
+  },
+  "vueVersion": "3"
+}

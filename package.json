@@ -1,0 +1,25 @@
+{
+  "name": "yanyun-fashion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "燕云十六声 · 古风时装搭配小程序：uniapp 小程序端 + Spring Boot(JeecgBoot 规范) 服务端 + Ant Design Vue 管理后台",
+  "packageManager": "pnpm@11.28.5",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:server": "node scripts/dev.mjs --only server",
+    "dev:admin": "node scripts/dev.mjs --only admin",
+    "dev:h5": "node scripts/dev.mjs --only h5",
+    "dev:mp": "pnpm --dir miniapp dev:mp-weixin",
+    "tokens": "node scripts/gen-tokens.mjs",
+    "art": "node scripts/art.mjs",
+    "build": "node scripts/build.mjs",
+    "build:admin": "pnpm --dir admin build",
+    "build:h5": "pnpm --dir miniapp build:h5",
+    "build:mp": "pnpm --dir miniapp build:mp-weixin",
+    "build:server": "node scripts/build.mjs --only server",
+    "verify": "node scripts/verify.mjs"
+  }
+}

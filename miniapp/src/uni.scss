@@ -1,0 +1,12 @@
+/**
+ * uni.scss 会被 uni-app 自动注入到每个组件的 <style lang="scss"> 之前，
+ * 因此这里只需把设计令牌引进来，各页面就能直接用 $accent / $paper-100 / $space-32 等变量。
+ * 令牌本身由 scripts/gen-tokens.mjs 从 design/tokens.json 生成，勿手改。
+ */
+@import '@/styles/tokens.scss';
+
+/* 常用组合，减少各页面重复书写 */
+$page-bg: $paper-100;
+$card-bg: $paper-50;
+$card-border: 1px solid $ink-100;
+$nav-height: 88rpx;

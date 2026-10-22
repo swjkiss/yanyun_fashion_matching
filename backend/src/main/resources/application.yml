@@ -1,0 +1,83 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /jeecg-boot
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  tomcat:
+    uri-encoding: UTF-8
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain,text/css,application/javascript
+    min-response-size: 2048
+
+spring:
+  application:
+    name: yanyun-fashion-server
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/yanyun_fashion?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    hikari:
+      pool-name: YanyunFashionHikari
+      minimum-idle: 2
+      maximum-pool-size: 10
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 10MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+    default-property-inclusion: always
+    serialization:
+      write-dates-as-timestamps: false
+      fail-on-empty-beans: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+  global-config:
+    banner: false
+    db-config:
+      id-type: input
+      table-underline: true
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+app:
+  jwt:
+    # 生产环境应通过环境变量 APP_JWT_SECRET 覆盖
+    secret: yanyun-fashion-2026-16sheng-jwt-secret-key
+    expire-hours: 168
+    issuer: yanyun-fashion
+  upload:
+    # 相对路径按启动工作目录解析，也支持绝对路径（可用 APP_UPLOAD_BASE_DIR 覆盖）
+    base-dir: upload/images
+    # 与静态资源映射一致的对外前缀（context-path /jeecg-boot 下可访问）
+    url-prefix: /jeecg-boot/images
+    max-size: 5242880
+    allowed-ext: jpg,jpeg,png,webp
+  cors:
+    allowed-origin-pattern: "*"
+  init:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.yanyun.fashion: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{40} - %msg%n"

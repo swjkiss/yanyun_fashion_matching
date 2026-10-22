@@ -1,0 +1,177 @@
+/* 由 scripts/gen-tokens.mjs 从 design/tokens.json 生成 —— 请勿手动修改 */
+/* target: admin CSS variables | generated: 2026-10-22T01:53:37.561Z */
+
+:root {
+  /* palette */
+  --color-ink-50: #EDE8E3;
+  --color-ink-100: #D9D0C6;
+  --color-ink-200: #B7ADA4;
+  --color-ink-300: #918780;
+  --color-ink-400: #6E645B;
+  --color-ink-500: #514840;
+  --color-ink-600: #3A332D;
+  --color-ink-700: #2A2521;
+  --color-ink-800: #1B1815;
+  --color-ink-900: #100E0C;
+  --color-paper-50: #FDFBF7;
+  --color-paper-100: #F7F2E9;
+  --color-paper-200: #EFE7D9;
+  --color-paper-300: #E3D8C6;
+  --color-paper-400: #D2C3AC;
+  --color-cinnabar-100: #F7E5E2;
+  --color-cinnabar-300: #D96B62;
+  --color-cinnabar-400: #C0443C;
+  --color-cinnabar-500: #A6322A;
+  --color-cinnabar-600: #8A2A21;
+  --color-gold-100: #F6EEDF;
+  --color-gold-300: #E0C99A;
+  --color-gold-400: #C9A063;
+  --color-gold-500: #B08A45;
+  --color-gold-600: #8A6A32;
+  --color-jade-100: #E4EDEA;
+  --color-jade-400: #86A79E;
+  --color-jade-500: #5F837A;
+  --color-jade-600: #47655C;
+  --color-indigo-100: #E3E8EE;
+  --color-indigo-400: #55697D;
+  --color-indigo-500: #38485A;
+  --color-indigo-600: #2B3947;
+  --color-ochre-100: #F2E3D6;
+  --color-ochre-400: #B88154;
+  --color-ochre-500: #9A6238;
+  --color-ochre-600: #7A4A2E;
+  --color-purple-100: #EFE3EA;
+  --color-purple-400: #8C5C74;
+  --color-purple-500: #6B4159;
+  --color-purple-600: #4E2F44;
+  --color-bamboo-100: #E5EDE3;
+  --color-bamboo-400: #7B9878;
+  --color-bamboo-500: #56755A;
+  --color-bamboo-600: #3F5A45;
+  --color-moon-100: #F0F3F4;
+  --color-moon-400: #BCC6CC;
+  --color-moon-500: #9AA6AF;
+  --color-moon-600: #7E8A94;
+  
+  /* semantic */
+  --bg: #F7F2E9;
+  --bg-subtle: #FDFBF7;
+  --surface: #FFFDF9;
+  --surface-raised: #FFFFFF;
+  --surface-inverse: #1B1815;
+  --text-primary: #1B1815;
+  --text-secondary: #514840;
+  --text-tertiary: #6E645B;
+  --text-placeholder: #918780;
+  --text-inverse: #F7F2E9;
+  --border: rgba(27,24,21,0.10);
+  --border-strong: rgba(27,24,21,0.18);
+  --divider: rgba(27,24,21,0.07);
+  --accent: #A6322A;
+  --accent-hover: #8A2A21;
+  --accent-soft: #F7E5E2;
+  --gold: #B08A45;
+  --gold-soft: #F6EEDF;
+  --success: #47655C;
+  --warning: #9A6238;
+  --danger: #A6322A;
+  --info: #38485A;
+  
+  /* rarity */
+  --rarity-common: #7E8A94;
+  --rarity-common-bg: #F0F3F4;
+  --rarity-common-border: #D6DDE1;
+  --rarity-fine: #47655C;
+  --rarity-fine-bg: #E4EDEA;
+  --rarity-fine-border: #BFD3CD;
+  --rarity-rare: #38485A;
+  --rarity-rare-bg: #E3E8EE;
+  --rarity-rare-border: #C2CCD8;
+  --rarity-epic: #8A6A32;
+  --rarity-epic-bg: #F6EEDF;
+  --rarity-epic-border: #E4D2AC;
+  --rarity-legend: #A6322A;
+  --rarity-legend-bg: #F7E5E2;
+  --rarity-legend-border: #EBC3BF;
+  
+  /* spacing */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-14: 56px;
+  --space-18: 72px;
+  
+  /* radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+  
+  /* shadow */
+  --shadow-xs: 0 1px 2px rgba(27,24,21,0.05);
+  --shadow-sm: 0 2px 8px -2px rgba(27,24,21,0.08);
+  --shadow-md: 0 6px 20px -8px rgba(27,24,21,0.16);
+  --shadow-lg: 0 16px 44px -16px rgba(27,24,21,0.22);
+  --shadow-ink: 0 24px 60px -24px rgba(16,14,12,0.45);
+  
+  /* motion */
+  --motion-fast: 140ms;
+  --motion-base: 220ms;
+  --motion-slow: 380ms;
+  --motion-slower: 640ms;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
+  --motion-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* typography */
+  --font-display: "Songti SC", "STSong", "Source Han Serif SC", "Noto Serif SC", "SimSun", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 38px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.75;
+  --tracking-tighter: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.12em;
+  --tracking-widest: 0.24em;
+  
+  /* layers */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-overlay: 100;
+  --z-dropdown: 200;
+  --z-modal: 1000;
+  --z-toast: 2000;
+  
+  /* layout */
+  --layout-max-content-width: 1280;
+  --layout-sidebar-width: 216;
+  --layout-sidebar-collapsed-width: 64;
+  --layout-header-height: 56;
+  --layout-mobile-gutter: 16;
+  --layout-design-width: 750;
+}
