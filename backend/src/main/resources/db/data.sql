@@ -11,10 +11,12 @@ SET NAMES utf8mb4;
 -- ---------------------------------------------------------------------------
 -- 3.1 用户
 -- ---------------------------------------------------------------------------
+-- 口令：admin 为 BCrypt(admin123)；demo / suyi 为历史 MD5 格式（明文未在此记录），
+-- 首次用密码登录成功后服务端会自动改写为 BCrypt，无需人工迁移。
 INSERT IGNORE INTO `sys_user`
   (`id`, `username`, `password`, `salt`, `realname`, `avatar`, `role`, `status`, `del_flag`, `create_time`, `update_time`)
 VALUES
-  ('u1001', 'admin', 'a4be7c70a8af8b30937041c04ccab5a9', 'k3f9a2x7', '云中君', '/images/avatar/avatar-01.jpg', 'admin', 1, 0, '2025-07-01 09:00:00', '2025-07-01 09:00:00'),
+  ('u1001', 'admin', '$2a$10$zYCvvR0PEz5c3XKC1eap.u4jCj1WXAyGx28MEEXXr74w/9V5.G1y2', '', '云中君', '/images/avatar/avatar-01.jpg', 'admin', 1, 0, '2025-07-01 09:00:00', '2025-07-01 09:00:00'),
   ('u1002', 'demo',  '2a0a9eb1ce371bfeaa3f98b0b9234a59', 'p8q2w5z1', '青衫客', '/images/avatar/avatar-02.jpg', 'user',  1, 0, '2025-07-02 10:20:00', '2025-07-02 10:20:00'),
   ('u1003', 'suyi',  '764ef818ac0379631a73b43043b3aed2', 'm6r4t9y3', '素衣',   '/images/avatar/avatar-03.jpg', 'user',  1, 0, '2025-07-03 15:40:00', '2025-07-03 15:40:00');
 

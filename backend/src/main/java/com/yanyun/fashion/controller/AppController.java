@@ -56,16 +56,16 @@ public class AppController {
     private final OutfitService outfitService;
 
     /**
-     * 免密登录（演示环境）。
+     * 免密登录（演示环境）：固定签发 demo 演示账号令牌。
      *
-     * @param body {username} 可空，缺省 demo
+     * <p>安全约束：不接受客户端传入的用户名。本接口匿名可达，
+     * 若按用户名直通签发令牌，任何人可冒充 sys_user 表中的任意账号（含 admin 角色）。</p>
+     *
      * @return 令牌与用户信息
      */
     @PostMapping("/guest-login")
-    public Result<LoginVO> guestLogin(@RequestBody(required = false) Map<String, Object> body) {
-        String username = body == null || body.get("username") == null
-                ? null : String.valueOf(body.get("username"));
-        return Result.ok("登录成功", authService.guestLogin(username));
+    public Result<LoginVO> guestLogin() {
+        return Result.ok("登录成功", authService.guestLogin());
     }
 
     /**

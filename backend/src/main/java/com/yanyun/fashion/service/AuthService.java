@@ -9,6 +9,8 @@ import com.yanyun.fashion.vo.LoginVO;
 import com.yanyun.fashion.vo.UserInfoVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,7 +20,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
 /**
- * 认证服务：口令校验（JeecgBoot 的 MD5(用户名+明文+盐) 规则）、令牌签发、用户信息组装。
+ * 认证服务：口令校验（BCrypt；兼容历史 MD5 账号并在登录后自动升级）、令牌签发、用户信息组装。
  *
  * @author yanyun backend
  */
@@ -30,9 +32,15 @@ public class AuthService {
     /** 小程序免密登录的默认账号。 */
     private static final String DEFAULT_GUEST = "demo";
 
+    /** BCrypt 哈希前缀（$2a$ / $2b$ / $2y$）。 */
+    private static final String BCRYPT_PREFIX = "$2";
+
     private final SysUserMapper userMapper;
 
     private final JwtUtil jwtUtil;
+
+    /** 口令编码器：BCrypt 自带随机盐，无需额外 salt 字段。 */
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     /**
      * 账号密码登录。
@@ -52,8 +60,7 @@ public class AuthService {
         if (user.getStatus() != null && user.getStatus() == 0) {
             throw new BizException("账号已被冻结，请联系管理员");
         }
-        String expected = encrypt(user.getUsername(), password, user.getSalt());
-        if (!expected.equalsIgnoreCase(user.getPassword())) {
+        if (!matches(user, password)) {
             throw new BizException("用户名或密码错误");
         }
         log.info("[登录] {} ({}) 登录成功", user.getUsername(), user.getId());
@@ -61,17 +68,56 @@ public class AuthService {
     }
 
     /**
-     * 小程序免密登录：演示环境按用户名直接换取令牌，缺省用 demo 账号。
+     * 校验口令。历史 MD5 账号校验通过后立即改写为 BCrypt，实现平滑迁移。
      *
-     * @param username 用户名，可空
+     * @param user     用户
+     * @param password 明文口令
+     * @return 是否匹配
+     */
+    private boolean matches(SysUser user, String password) {
+        String stored = user.getPassword();
+        if (stored != null && stored.startsWith(BCRYPT_PREFIX)) {
+            return passwordEncoder.matches(password, stored);
+        }
+        if (!legacyEncrypt(user.getUsername(), password, user.getSalt()).equalsIgnoreCase(stored)) {
+            return false;
+        }
+        upgradeToBcrypt(user, password);
+        return true;
+    }
+
+    /**
+     * 把历史 MD5 口令升级为 BCrypt，失败只记录日志、不影响本次登录。
+     *
+     * @param user     用户
+     * @param password 本次登录的明文口令
+     */
+    private void upgradeToBcrypt(SysUser user, String password) {
+        try {
+            SysUser update = new SysUser();
+            update.setId(user.getId());
+            update.setPassword(passwordEncoder.encode(password));
+            update.setSalt("");
+            userMapper.updateById(update);
+            user.setPassword(update.getPassword());
+            user.setSalt("");
+            log.info("[登录] 用户 {} 的口令已从 MD5 升级为 BCrypt", user.getUsername());
+        } catch (Exception e) {
+            log.warn("[登录] 用户 {} 口令升级失败：{}", user.getUsername(), e.getMessage());
+        }
+    }
+
+    /**
+     * 小程序免密登录：固定签发演示账号（demo）令牌。
+     *
+     * <p>安全约束：不接受调用方传入的用户名。guest-login 是匿名接口，
+     * 若按用户名直通签发令牌，任何人可冒充 sys_user 表中的任意账号
+     * （包括 admin 角色账号），因此这里只允许默认演示账号。</p>
+     *
      * @return 令牌与用户信息
      */
-    public LoginVO guestLogin(String username) {
-        String target = StringUtils.hasText(username) ? username.trim() : DEFAULT_GUEST;
-        SysUser user = userMapper.selectByUsername(target);
-        if (user == null) {
-            user = userMapper.selectByUsername(DEFAULT_GUEST);
-        }
+    public LoginVO guestLogin() {
+        SysUser user = userMapper.selectByUsername(DEFAULT_GUEST);
         if (user == null) {
             throw new BizException("演示账号不存在，请先初始化数据库");
         }
@@ -139,14 +185,17 @@ public class AuthService {
     }
 
     /**
-     * JeecgBoot 口令算法：MD5(用户名 + 明文 + 盐)，小写十六进制。
+     * 历史口令算法（JeecgBoot 兼容）：MD5(用户名 + 明文 + 盐)，小写十六进制。
+     *
+     * <p>仅用于校验存量 MD5 账号，登录成功后会被 {@link #upgradeToBcrypt} 改写为 BCrypt，
+     * 新口令一律使用 BCrypt，不再产生 MD5。</p>
      *
      * @param username 用户名
      * @param password 明文口令
      * @param salt     盐
      * @return 32 位小写十六进制
      */
-    public static String encrypt(String username, String password, String salt) {
+    private static String legacyEncrypt(String username, String password, String salt) {
         String raw = (username == null ? "" : username)
                 + (password == null ? "" : password)
                 + (salt == null ? "" : salt);

@@ -12,7 +12,7 @@ SET NAMES utf8mb4;
 CREATE TABLE IF NOT EXISTS `sys_user` (
   `id`          varchar(32)  NOT NULL                COMMENT '主键，u####',
   `username`    varchar(64)  NOT NULL                COMMENT '登录名',
-  `password`    varchar(128) NOT NULL                COMMENT 'MD5(用户名+明文+盐)，小写十六进制',
+  `password`    varchar(128) NOT NULL                COMMENT 'BCrypt 哈希；历史数据兼容 MD5(用户名+明文+盐)，登录成功后自动升级',
   `salt`        varchar(32)  NOT NULL DEFAULT ''     COMMENT '盐值',
   `realname`    varchar(64)  DEFAULT NULL            COMMENT '昵称',
   `avatar`      varchar(255) DEFAULT NULL            COMMENT '头像相对路径',

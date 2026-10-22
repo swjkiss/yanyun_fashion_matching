@@ -58,6 +58,12 @@
       <version>${java-jwt.version}</version>
     </dependency>
 
+    <!-- 口令哈希：仅取 spring-security-crypto 的 BCrypt，不引入 Spring Security 自动配置 -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-crypto</artifactId>
+    </dependency>
+
     <!-- Lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>
